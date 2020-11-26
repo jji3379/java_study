@@ -1,8 +1,17 @@
 package test.mypac;
 
 public class SmartPhone extends HandPhone{
+	//디폴트 생성자
+	public SmartPhone() {
+		System.out.println("SmartPhone() 생성자 호출됨");
+	}
+	
 	public void doInternet() {
 		//인터넷 하는 메소드
+		call();
+		mobileCall();
+		super.takePicture(); //HandPhone takePicture override 전 상태
+		this.takePicture();  //override 후 상태
 		System.out.println("인터넷을 해요");
 	}
 	//이 메소드는 재정의한 메소드라고 표시해주는 어노테이션(@)
