@@ -58,5 +58,11 @@ public class MainClass {
 			}	
 		};
 		btn2.addActionListener(listener2);
+		/*
+		 *	람다식을 활용하면 아래와 같다
+		 *	btn2.addActionListener((e)->{
+		 *		JOptionPane.showMessageDialog(f, "약올리지마!");
+		 *}) 
+		 */
 	}
 }
