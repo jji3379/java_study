@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -59,26 +60,30 @@ public class MainFrame extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//입력한 숫자문자열을 실제 산술연산 가능한 숫자로 바꾸기
-		double num1=Double.parseDouble(inputNum1.getText());
-		double num2=Double.parseDouble(inputNum2.getText());
-		//연산의 결과값을 저장할 변수 만들고 0으로 초기화
-		double result=0;
-		//눌러진 버튼의 액션 command 를 읽어와서
-		String command=e.getActionCommand();
-		//if문으로 분기 한다.
-		if(command.equals("plus")) {
-			result=num1+num2;
-		}else if(command.equals("minus")) {
-			result=num1-num2;
-		}else if(command.equals("multiple")) {
-			result=num1*num2;
-		}else if(command.equals("division")) {
-			result=num1/num2;
+		try {
+			//입력한 숫자문자열을 실제 산술연산 가능한 숫자로 바꾸기
+			double num1=Double.parseDouble(inputNum1.getText());
+			double num2=Double.parseDouble(inputNum2.getText());
+			//연산의 결과값을 저장할 변수 만들고 0으로 초기화
+			double result=0;
+			//눌러진 버튼의 액션 command 를 읽어와서
+			String command=e.getActionCommand();
+			//if문으로 분기 한다.
+			if(command.equals("plus")) {
+				result=num1+num2;
+			}else if(command.equals("minus")) {
+				result=num1-num2;
+			}else if(command.equals("multiple")) {
+				result=num1*num2;
+			}else if(command.equals("division")) {
+				result=num1/num2;
+			}
+			//결과값을 문자열로 바꿔서 JLabel 에 출력하기
+			String strNum=Double.toString(result);
+			label_result.setText(strNum);
+		}catch(Exception e1){
+			JOptionPane.showConfirmDialog(this, "숫자 형식으로 입력해 주세요.");
 		}
-		//결과값을 문자열로 바꿔서 JLabel 에 출력하기
-		String strNum=Double.toString(result);
-		label_result.setText(strNum);
 	}
 		
 	public static void main(String[] args) {
@@ -86,5 +91,6 @@ public class MainFrame extends JFrame implements ActionListener{
 		f.setBounds(100,100,800,300);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
+		
 	}
 }
