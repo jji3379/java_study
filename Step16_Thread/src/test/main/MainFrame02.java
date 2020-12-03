@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import test.mypac.SubThread;
+
 public class MainFrame02 extends JFrame implements ActionListener{
 	//생성자
 	public MainFrame02(String title) {
@@ -22,14 +24,10 @@ public class MainFrame02 extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JOptionPane.showConfirmDialog(this, "알림 입니다.!!!");
-		try {
-			System.out.println("무언가 10초(오랜시간)이 걸리는 작업을 합니다.");
-			Thread.sleep(10000);
-			System.out.println("시간이 오래 걸리는 작업이 끝났습니다.");
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		//3. Thread 클래스를 상속받은 SubThread 클래스로 객체 생성
+		Thread t=new SubThread();
+		//4. start() 메소드를 호출하면 새로운 작업단위가 시작된다.
+		t.start();
 		System.out.println("actionPerformed() 메소드가 리턴 합니다.");
 	}
 
