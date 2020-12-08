@@ -35,7 +35,7 @@ public class MainClass01 {
 			//sql 문을 대신 실행해주는 PreparedStatement 객체의 참조값 얻어오기
 			pstmt=conn.prepareStatement(sql);
 			//SELECT 문 수행하고 결과 row 를 ResultSet 객체로 받아오기
-			rs=pstmt.executeQuery();
+			rs=pstmt.executeQuery(); //SELECT 는 execute Query
 			//rs.next() 메소드가 false 를 리턴할 때 까지 while 반복문 돌기
 			while(rs.next()) {
 				//현재 커서가 위치한 곳에서 num 칼럼의 값을 정수로 얻어내기
