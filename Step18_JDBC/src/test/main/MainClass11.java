@@ -22,7 +22,7 @@ public class MainClass11 {
 		MemberDao dao = new MemberDao();
 		MemberDto dto = dao.select(num);
 		if(dto!=null) {
-			System.out.println(num+" | "+dto.getName()+" | "
+			System.out.println(dto.getNum()+" | "+dto.getName()+" | "
 					+dto.getAddr());
 		}else{
 			System.out.println("해당회원은 존재하지 않습니다.");
