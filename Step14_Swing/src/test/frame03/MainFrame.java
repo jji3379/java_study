@@ -36,7 +36,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		//패널 째로 프레임의 북쪽에 배치하기
 		add(topPanel, BorderLayout.NORTH);
 		
-		//내가 짠거 선생님 커밋 확인해보기
+		//내가 짠거 선생님 커밋 확인해보기 sendBtn.addActionListener(this) : ActionListener implement
 		ActionListener listener=new ActionListener() {
 
 			@Override
