@@ -185,5 +185,27 @@ public class MemberFrame extends JFrame implements ActionListener{
 			}
 		}
 	}
+	//table 칼럼이 수정중인지 여부 
+	boolean isEditing=false;
+	
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		System.out.println("change!");
+		System.out.println(evt.getPropertyName());
+		//만일 table 칼럼에서 발생한 이벤트라면
+		if(evt.getPropertyName().equals("tableCellEditor")) {
+			if(isEditing) {
+				//수정된 row 를 읽어와서 DB 에 반영한다.
+				int selectedIndex=table.getSelectedRow();
+				int num=(int)model.getValueAt(selectedIndex, 0);
+				String name=(String)model.getValueAt(selectedIndex, 1);
+				String addr=(String)model.getValueAt(selectedIndex, 2);
+				MemberDto dto=new MemberDto(num, name, addr);
+				new MemberDao().update(dto);
+			}
+			//isEditing 의 값을 반대로 바꿔준다. true => false, false => true
+			isEditing=!isEditing;
+		}
+	}
 }
 
