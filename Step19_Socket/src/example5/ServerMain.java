@@ -85,7 +85,18 @@ public class ServerMain {
 				
 			}catch(Exception e) {
 				e.printStackTrace();
-			}//catch END
+				//catch END
+			}finally{
+				try {
+					socket.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			//현재 여기에 실행순서가 넘어온 스레드의 참조값 : this 로 참조가 가능하다
+			//오류가 나거나 접속 종료된 스레드는 목록에서 제거 해야한다.
+
+			threadList.remove(this);
 		}//run overrid END
 	}//ServerThread Class END
 }
